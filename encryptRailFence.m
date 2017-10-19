@@ -2,7 +2,7 @@ function [cipher,RailFence] = encryptRailFence(text,key,replace_space)
     
     %simple to use function
     %[cipher,RailFence] = encryptRailFence('how areU',4,'*')
-    %cipher ='he*orU*wa****' % more detail in RailFence variable
+    %cipher = 'he*orU*wa****' % more detail in RailFence variable
     
     text = replace(text,' ',replace_space);
     Railkey = key+1;
