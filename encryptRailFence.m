@@ -1,13 +1,17 @@
-function cipher = encryptRailFence(text,key,replace_space)
+function [cipher,RailFence] = encryptRailFence(text,key,replace_space)
+    
+    %simple to use function
+    %[cipher,RailFence] = encryptRailFence('how areU',4,'*')
+    %cipher ='he*orU*wa****' % more detail in RailFence variable
+    
     text = replace(text,' ',replace_space);
     Railkey = key+1;
     nextText = 1;
     Textlength = length(text);
     
-    
-    
     for i=1:Textlength/key
         if mod(Railkey,key) == 1
+            
             for Railkey = 1:key
                 if nextText <= Textlength
                     RailFence{Railkey,nextText} = text(nextText);
@@ -29,7 +33,7 @@ function cipher = encryptRailFence(text,key,replace_space)
             end
         end
     end
-    EmptyCell = [];
+    RailFence{1,size(RailFence,2)+1} = replace_space; 
     cipher = '';
     xsize1 = size(RailFence,1);
     xsize2 = size(RailFence,2);
